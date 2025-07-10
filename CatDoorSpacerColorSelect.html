@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
-    <title>Jinx Prints</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Color select</title>
     <style>
         html, body {
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* prevent horizontal scroll */
+            overflow-x: hidden;
             background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
         }
 
         body {
@@ -21,19 +21,27 @@
         }
 
         .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
             padding: 20px;
-            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .left {
+            flex: 2;
+        }
+
+        .right {
+            flex: 1;
+            padding-left: 20px;
         }
 
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 10px;
-            width: 100%;
-            max-width: 100vw;
-            justify-content: center;
             padding: 10px;
-            box-sizing: border-box;
         }
 
         .grid-item {
@@ -44,6 +52,7 @@
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s;
+            cursor: pointer;
         }
 
         .grid-item:hover {
@@ -66,34 +75,125 @@
             padding: 5px;
             font-size: 14px;
             text-align: center;
-            font-family: Arial, sans-serif;
+        }
+
+        .info-box {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .info-box h2 {
+            margin-top: 0;
+        }
+
+        .color-display {
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .address-input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .message-box {
+            margin-top: 20px;
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .instructions {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="grid-container">
-            <a href="https://example.com" class="grid-item">
-                <img src="https://example.com/image.png" alt="Png not loading">
-                <div class="text-box">gold</div>
-            </a>
+        <!-- LEFT SIDE: Color Grid -->
+        <div class="left">
+            <h2>Select a Color</h2>
+            <div class="grid-container">
+                <div class="grid-item" data-color="Gold" data-hex="#FFD700">
+                    <img src="https://via.placeholder.com/150/FFD700/000000?text=Gold" alt="Gold">
+                    <div class="text-box">Gold</div>
+                </div>
+                <div class="grid-item" data-color="Red" data-hex="#FF0000">
+                    <img src="https://via.placeholder.com/150/FF0000/FFFFFF?text=Red" alt="Red">
+                    <div class="text-box">Red</div>
+                </div>
+                <div class="grid-item" data-color="Blue" data-hex="#0000FF">
+                    <img src="https://via.placeholder.com/150/0000FF/FFFFFF?text=Blue" alt="Blue">
+                    <div class="text-box">Blue</div>
+                </div>
+                <!-- Add more colors here -->
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE: Info Panel -->
+        <div class="right">
+            <div class="info-box">
+                <h2>Cat Door Latch</h2>
+                <div class="color-display" id="colorDisplay">Color: None selected</div>
+                <div class="color-display">Price: $9</div>
+
+                <input type="text" id="addressInput" class="address-input" placeholder="Enter your shipping address">
+
+                <div class="message-box" id="outputMessage">
+                    Select a color and enter your address to generate a message.
+                </div>
+
+                <div class="instructions">
+                    Copy and paste the message above and send it to:<br>
+                    <strong>jinxprints4@gmail.com</strong>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Update background and dynamically contrast text color
-        document.addEventListener('mousemove', (event) => {
-            const x = event.clientX;
-            const y = event.clientY;
-            const width = window.innerWidth;
-            const height = window.innerHeight;
+        const gridItems = document.querySelectorAll('.grid-item');
+        const colorDisplay = document.getElementById('colorDisplay');
+        const addressInput = document.getElementById('addressInput');
+        const outputMessage = document.getElementById('outputMessage');
 
-            const red = Math.round((x / width) * 255);
-            const green = Math.round((y / height) * 255);
-            const blue = Math.round(((x + y) / (width + height)) * 255);
+        let selectedColor = null;
 
-            document.body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+        function updateMessage() {
+            const address = addressInput.value.trim();
+            if (!selectedColor || !address) {
+                outputMessage.textContent = 'Select a color and enter your address to generate a message.';
+                return;
+            }
+
+            const message = `Hello, I would like to order a Cat Door Latch.\nColor: ${selectedColor}\nPrice: $9\nShipping Address: ${address}`;
+            outputMessage.textContent = message;
+        }
+
+        gridItems.forEach(item => {
+            item.addEventListener('click', () => {
+                selectedColor = item.getAttribute('data-color');
+                const hex = item.getAttribute('data-hex');
+
+                colorDisplay.textContent = `Color: ${selectedColor}`;
+                colorDisplay.style.color = hex;
+
+                updateMessage();
+            });
         });
+
+        addressInput.addEventListener('input', updateMessage);
     </script>
 </body>
 </html>
