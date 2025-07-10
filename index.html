@@ -3,27 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
-    <title>JinxPrints</title>
+    <title>IXL TRUST 100%</title>
     <link rel="stylesheet" href="style.css">
-    <script>
-        // Visit counter fetch
-        function displayVisitCount() {
-            fetch('https://raw.githubusercontent.com/ALessCoolApple1/GYATGAMES.ia/main/counter.json')
-                .then(response => response.json())
-                .then(data => {
-                    const visitCount = data.visits;
-                    document.getElementById('visit-count').textContent = `Visit Count: ${visitCount}`;
-                })
-                .catch(error => {
-                    console.error("Error fetching visit count:", error);
-                    document.getElementById('visit-count').textContent = "Unable to load visit count.";
-                });
-        }
-
-        window.onload = function () {
-            displayVisitCount();
-        };
-    </script>
     <style>
         html, body {
             margin: 0;
@@ -42,20 +23,6 @@
         .container {
             padding: 20px;
             text-align: center;
-        }
-
-        #visit-count {
-            font-size: 48px;
-            font-weight: 900;
-            padding: 30px 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.5s, color 0.5s;
-            margin-bottom: 40px;
-            display: inline-block;
-            border: 4px solid rgba(255, 255, 255, 0.4);
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            background-color: white;
         }
 
         .grid-container {
@@ -105,8 +72,6 @@
 </head>
 <body>
     <div class="container">
-        <div id="visit-count">Visit Count: Loading</div>
-
         <div class="grid-container">
             <a href="https://example.com" class="grid-item">
                 <img src="https://example.com/image.png" alt="Png not loading">
@@ -116,7 +81,7 @@
     </div>
 
     <script>
-        // Update background and dynamically contrast counter color
+        // Update background and dynamically contrast text color
         document.addEventListener('mousemove', (event) => {
             const x = event.clientX;
             const y = event.clientY;
@@ -128,15 +93,6 @@
             const blue = Math.round(((x + y) / (width + height)) * 255);
 
             document.body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-
-            const visitBox = document.getElementById('visit-count');
-            visitBox.style.backgroundColor = 'white';
-
-            const textRed = Math.max(0, 255 - red);
-            const textGreen = Math.max(0, 255 - green);
-            const textBlue = Math.max(0, 255 - blue);
-
-            visitBox.style.color = `rgb(${textRed}, ${textGreen}, ${textBlue})`;
         });
     </script>
 </body>
