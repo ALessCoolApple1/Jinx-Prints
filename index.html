@@ -1,2 +1,276 @@
-wow a index file
-so cool
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <title>IXL TRUST 100%</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Cookie functions
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Password protection
+        var password = "2190";
+        (function passcodeprotect() {
+            var accessGranted = getCookie("accessGranted");
+            if (!accessGranted) {
+                var passcode = prompt("Enter PassCode");
+                if (passcode !== password) {
+                    alert("I didn't give you this site I know you get it from looking at someone else's computer");
+                    document.body.innerHTML = '';
+                    document.body.style.display = 'none';
+                    return false;
+                } else {
+                    setCookie("accessGranted", "true", 7);
+                    alert('Good, I guess you are one of the few I gave access to');
+                }
+            } else {
+                alert('You are already granted access!');
+            }
+        })();
+
+        // Visit counter fetch
+        function displayVisitCount() {
+            fetch('https://raw.githubusercontent.com/ALessCoolApple1/GYATGAMES.ia/main/counter.json')
+                .then(response => response.json())
+                .then(data => {
+                    const visitCount = data.visits;
+                    document.getElementById('visit-count').textContent = `Visit Count: ${visitCount}`;
+                })
+                .catch(error => {
+                    console.error("Error fetching visit count:", error);
+                    document.getElementById('visit-count').textContent = "Unable to load visit count.";
+                });
+        }
+
+        window.onload = function () {
+            displayVisitCount();
+        };
+    </script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 0px;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        #visit-count {
+            font-size: 48px;
+            font-weight: 900;
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.5s, color 0.5s;
+            margin-bottom: 40px;
+            display: inline-block;
+            border: 4px solid rgba(255, 255, 255, 0.4);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 150px);
+            gap: 10px;
+            width: 100%;
+            max-width: 100vw;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .grid-item {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 14.75px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text-box {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 5px;
+            font-size: 14px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="visit-count">Visit Count: Loading</div>
+
+        <div class="grid-container">
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game1.html" class="grid-item">
+            <img src="https://infinite-craft.co/data/image/game/drive-mad.jpg" alt="Png not loading">
+            <div class="text-box">Drive mad</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game2.html" class="grid-item">
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSSZhphk6g_b-klNIDFWmiYaVMqPzC1RREIi1fp7bJMy1q9YfIz" alt="Png not loading">
+            <div class="text-box">Idle Miner</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game3.html" class="grid-item">
+            <img src="https://miro.medium.com/v2/resize:fit:512/1*e6GY0o5HuIvtOOK3wR0lwA.png" alt="Png not loading">
+            <div class="text-box">Tetris</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game4.html" class="grid-item">
+            <img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/ba04eca05c362b04deec44651e86e39a.png" alt="Png not loading">
+            <div class="text-box">Stackris</div>
+        </a> 
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game5.html" class="grid-item">
+            <img src="https://mathsedu1510.github.io/img/class-533.png" alt="Png not loading">
+            <div class="text-box">Gunspin</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game6.html" class="grid-item">
+            <img src="https://mathsedu1510.github.io/img/class-448.png" alt="Png not loading">
+            <div class="text-box">Cookie Clicker</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game7.html" class="grid-item">
+            <img src="https://mathsedu1510.github.io/img/class-450.png" alt="Png not loading">
+            <div class="text-box">Slope</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game8.html" class="grid-item">
+            <img src="https://labgstore311.github.io/img/class-528.png" alt="Png not loading">
+            <div class="text-box">N gon</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game9.html" class="grid-item">
+            <img src="https://labgstore311.github.io/img/class-633.png" alt="Png not loading">
+            <div class="text-box">Tag</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game10.html" class="grid-item">
+            <img src="https://labgstore311.github.io/img/class-481.png" alt="Png not loading">
+            <div class="text-box">Rooftop snipers</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game11.html" class="grid-item">
+            <img src="https://labgstore311.github.io/img/class-638.png" alt="Png not loading">
+            <div class="text-box">Jumping shell</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game12.html" class="grid-item">
+            <img src="https://labgstore311.github.io/img/class-784.png" alt="Png not loading">
+            <div class="text-box">Bloons 1</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game13.html" class="grid-item">
+            <img src="https://play-lh.googleusercontent.com/d7m2ov6sNDMa8iTkU7UYO8z5IJrYopwgAf8nmYH95DHfrkpt6Y8R_I77UHsrlrg7-4Mu" alt="Png not loading">
+            <div class="text-box">Gun mayhem</div>     
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game14.html" class="grid-item">
+            <img src="https://d.newsweek.com/en/full/1317374/bitlife-ribbons-how-get-all-complete-list-android-ios-cheats-guide-tips-become.jpg?w=1600&h=1600&q=88&f=75befc746fb83a0c568c44ca07bc5e64" alt="Png not loading">
+            <div class="text-box">Bit Life</div>        
+        </a>        
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game15.html" class="grid-item">
+            <img src="https://img.itch.zone/aW1nLzg3MTU5NzMucG5n/original/0LqGxb.png" alt="Png not loading">
+            <div class="text-box">10 Miniutes till dawn</div>
+        </a>            
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game16.html" class="grid-item">
+            <img src="https://images.sftcdn.net/images/t_app-icon-m/p/665c241b-c23e-4944-928a-ddf8f6293d4f/1578272852/idle-breakout-logo" alt="Png not loading">
+            <div class="text-box">Idle breakeout</div>
+        </a>  
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game17.html" class="grid-item">
+            <img src="https://escaperoad.io/data/image/game/eggy-car-sr1.png" alt="Png not loading">
+            <div class="text-box">Eggy car</div>
+        </a> 
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game18.html" class="grid-item"> 
+            <img src="https://pbs.twimg.com/profile_images/1217942835527409665/swRMqEkK_400x400.jpg" alt="Png not loading"> 
+            <div class="text-box">Retro Bowl</div> </a>
+         </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game19.html" class="grid-item">
+            <img src="https://bcaex.co/wp-content/uploads/2024/09/screenshot-of-the-plinko-game.jpg" alt="Png not loading">
+            <div class="text-box">Plinko</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game20.html" class="grid-item">
+            <img src="https://cdn.sanity.io/images/kts928pd/production/e95ba8a56353f8a6073f209002c7cfb59ce997b6-731x731.png" alt="Png not loading">
+            <div class="text-box">Crash/coinflip</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game21.html" class="grid-item">
+            <img src="https://img.itch.zone/aW1hZ2UvMjMyOTM0LzIyMTU1NjgucG5n/original/q7BiT1.png" alt="Png not loading">
+            <div class="text-box">The final earth 2</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game22.html" class="grid-item">
+            <img src="https://cdn-1.webcatalog.io/catalog/poki-stickman-hook/poki-stickman-hook-icon-filled-256.png?v=1714778807334" alt="Png not loading">
+            <div class="text-box">Stickman hook</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game23.html" class="grid-item">
+            <img src="https://play-lh.googleusercontent.com/ishnQb-SwlFk1Hf0O_48Esy6t9GmdL1jpmal5UIcAmTQ0sSXPEX_iFRplCHH1LLjxuDD" alt="Png not loading">
+            <div class="text-box">Idle dice</div>
+        </a>
+            <a href="https://alesscoolapple1.github.io/GYATGAMES.ia/Game24.html" class="grid-item">
+            <img src="https://play-lh.googleusercontent.com/l5OXNRzurL4a4lwLGbLxN9dTVkrHzkxIc5uqUwrJ7PdaynL-P9geRqe-0V5R-pnmf1M" alt="Png not loading">
+            <div class="text-box">Sandtris</div>
+        </a>
+        </div>
+    </div>
+
+    <script>
+        // Update background and dynamically contrast counter color
+        document.addEventListener('mousemove', (event) => {
+        const x = event.clientX;
+        const y = event.clientY;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        // Calculate RGB based on cursor position
+        const red = Math.round((x / width) * 255);
+        const green = Math.round((y / height) * 255);
+        const blue = Math.round(((x + y) / (width + height)) * 255);
+
+        // Set page background color
+        document.body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+
+        // Set the visit-count box background to fixed white
+        const visitBox = document.getElementById('visit-count');
+        visitBox.style.backgroundColor = 'white';
+
+        // Invert the body color for text, but clamp it to avoid pure white
+        const textRed = Math.max(0, 255 - red);
+        const textGreen = Math.max(0, 255 - green);
+        const textBlue = Math.max(0, 255 - blue);
+
+        // Apply the adjusted color to the text
+
+    });
+    </script>
+</body>
+</html>
